@@ -1,0 +1,34 @@
+{
+  "name": "logserver",
+  "version": "0.0.1",
+  "description": "logserver",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "filebuffer": "^1.0.4",
+    "ulid": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
+  },
+  "scripts": {
+    "lint": "eslint \"./**/*.js\"",
+    "lint-fix": "eslint --fix \"./**/*.js\"",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha **/*.test.js --bail --timeout 10000 --exit && sleep 0.5 && rm -r ./data/*",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lookasc/logserver.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lookasc/logserver/issues"
+  },
+  "homepage": "https://github.com/lookasc/logserver#readme"
+}
