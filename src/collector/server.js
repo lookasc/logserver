@@ -1,6 +1,6 @@
 const CONFIG = require('../../config');
+const MESSAGE = require('../../message');
 const dgram = require('dgram');
-
 
 class Server {
 
@@ -10,11 +10,20 @@ class Server {
 
 		this.server.on('listening', () => {
 			let address = this.server.address();
-			console.log(`Collector server started and listen on UDP ${address.address}:${address.port}`);
+			if (process.send) {
+			process.send({
+				source: CONFIG.COLLECTOR.PROCESS_NAME,
+				message: MESSAGE.LOG,
+				params: `Server started. Listening on UDP ${address.address}:${address.port}`
+			});}
 		});
 
 		this.server.on('error', error => {
-			console.log(error);
+			process.send({
+				source: CONFIG.COLLECTOR.PROCESS_NAME,
+				message: MESSAGE.ERROR,
+				params: error
+			});
 		});
 
 		this.server.on('message', message => {

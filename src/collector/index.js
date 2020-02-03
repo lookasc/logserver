@@ -1,7 +1,14 @@
+require('dotenv').config(); // { path: '.env' }
 const CONFIG = require('../../config');
 const MESSAGE = require('../../message');
 const Server = require('./server');
 const { FileBuffer } = require('filebuffer');
+
+process.send({
+	source: CONFIG.COLLECTOR.PROCESS_NAME,
+	message: MESSAGE.LOG,
+	params: 'Starting...'
+});
 
 const bufferConfigurtion = {
   dataDir: CONFIG.COLLECTOR.FILES.DIR,
