@@ -12,7 +12,7 @@ const dummyBuffer = {
 	}
 };
 
-describe('CollectorServer class', () => {
+describe('Server class', () => {
 	let server;
 	let dummyLogSource;
 	let dummyData = 'dummyData';

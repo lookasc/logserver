@@ -3,7 +3,7 @@ const CONFIG = require('../../config');
 const MESSAGE = require('../../message');
 const Server = require('./server');
 const { FileBuffer } = require('filebuffer');
-const { setProcessName, sendMessage } = require('./msg');
+const { setProcessName, sendMessage } = require('../utils/ipc-message');
 
 setProcessName(CONFIG.COLLECTOR.PROCESS_NAME);
 sendMessage(MESSAGE.LOG, 'Starting...');

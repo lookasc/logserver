@@ -1,7 +1,7 @@
 const CONFIG = require('../../config');
 const MESSAGE = require('../../message');
 const dgram = require('dgram');
-const { sendMessage } = require('./msg');
+const { sendMessage } = require('../utils/ipc-message');
 
 class Server {
 

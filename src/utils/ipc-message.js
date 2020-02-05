@@ -1,5 +1,6 @@
 function setProcessName (name) {
-	process.name = name;
+	if (process) process.name = name;
+	else throw new Error('Could not set process name')
 }
 
 function sendMessage (type, body) {
