@@ -17,9 +17,10 @@ const config = {
 		PROCESS_NAME: 'Decrypt',
 		ENABLED: process.env.DECRYPT_DATA || true,
 		PASSWORD: process.env.DECRYPT_PASSWORD || 'testPass',
-		PASSWORD_HASH_ALGHORITM: 'sha256',
+		PASSWORD_HASH_ALGHORITHM: 'sha256',
 		ALGORITHM: 'aes-256-cbc',
 		FILES: {
+			DIR: './data/decrypt/',
 			DECRYPTED_BUFFER_FILE_EXTENSION: 'decrypted',
 		}
 	}
@@ -40,7 +41,15 @@ const configForTests = {
 		},
 	},
 	DECRYPT: {
-		PROCESS_NAME: 'Decrypt'
+		PROCESS_NAME: 'Decrypt',
+		ENABLED: process.env.DECRYPT_DATA || true,
+		PASSWORD: process.env.DECRYPT_PASSWORD || 'testPass',
+		PASSWORD_HASH_ALGHORITHM: 'sha256',
+		ALGORITHM: 'aes-256-cbc',
+		FILES: {
+			DIR: './data/decrypt/',
+			DECRYPTED_BUFFER_FILE_EXTENSION: 'decrypted',
+		}
 	}
 };
 

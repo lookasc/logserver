@@ -4,7 +4,7 @@ const { createInterface } = require('readline');
 const crypto = require('crypto');
 
 const DECRYPT_KEY = crypto
-	.createHash(CONFIG.DECRYPT.PASSWORD_HASH_ALGHORITM)
+	.createHash(CONFIG.DECRYPT.PASSWORD_HASH_ALGHORITHM)
 	.update(CONFIG.DECRYPT.PASSWORD)
 	.digest();
 
@@ -34,11 +34,11 @@ class FileDecoder {
 	}
 
 	decrypt(data) {
-		const iv = data.slice(0, 16);
-		const encryptedData = data.slice(16);		
+		const iv = Buffer.from(data.slice(0, 32), 'hex');
+		const encryptedData = data.slice(32);	
 		let decipher = crypto.createDecipheriv(CONFIG.DECRYPT.ALGORITHM, Buffer.from(DECRYPT_KEY), iv);
-		let decrypted = decipher.update(encryptedData);
-		decrypted = Buffer.concat([decrypted, decrypted.final()]);
+		let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
+		decrypted += decipher.final('utf8');
 		return `${decrypted}`;
 	}
 
