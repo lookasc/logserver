@@ -14,7 +14,14 @@ const config = {
 		},
 	},
 	DECRYPT: {
-		PROCESS_NAME: 'Decrypt'
+		PROCESS_NAME: 'Decrypt',
+		ENABLED: process.env.DECRYPT_DATA || true,
+		PASSWORD: process.env.DECRYPT_PASSWORD || 'testPass',
+		PASSWORD_HASH_ALGHORITM: 'sha256',
+		ALGORITHM: 'aes-256-cbc',
+		FILES: {
+			DECRYPTED_BUFFER_FILE_EXTENSION: 'decrypted',
+		}
 	}
 };
 
